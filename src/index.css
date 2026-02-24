@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 90%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 90%;
+
+    --primary: 37 38% 61%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 37 38% 61%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 37 38% 61%;
+
+    --radius: 0rem;
+
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 37 38% 61%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 37 38% 61%;
+
+    /* Custom tokens */
+    --gold: 37 38% 61%;
+    --gold-light: 37 45% 72%;
+    --gold-dark: 37 35% 48%;
+    --surface: 0 0% 4%;
+  }
+
+  * {
+    @apply border-border;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #000000;
+    color: #ffffff;
+  }
+}
+
+@layer components {
+
+  /* ── Gold utilities ── */
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+
+  .bg-gold {
+    background-color: hsl(var(--gold));
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  .bg-surface {
+    background-color: hsl(var(--surface));
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)));
+  }
+
+  .gold-text-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-nav {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .card-hover {
+    transition: all 0.4s ease;
+  }
+
+  .card-hover:hover {
+    border-color: hsl(var(--gold));
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px hsla(37, 38%, 61%, 0.15);
+  }
+
+  /* ── Nav link underline ── */
+  .nav-link-animated {
+    position: relative;
+  }
+
+  .nav-link-animated::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: #ffffff;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link-animated:hover::after {
+    width: 100%;
+  }
+
+  /* ── Contact icon hover ── */
+  .contact-icon-box {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-icon-box:hover {
+    border-color: hsl(var(--gold));
+    box-shadow: 0 0 16px 2px hsla(37, 38%, 61%, 0.2);
+  }
+}
+
+@layer utilities {
+  .tracking-luxury {
+    letter-spacing: 0.25em;
+  }
+
+  @keyframes bounce-arrow {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  .animate-bounce-arrow {
+    animation: bounce-arrow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.7;
+      transform: scale(1.2);
+    }
+  }
+
+  .animate-pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+  }
+
+  @keyframes gold-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 hsla(37, 38%, 61%, 0);
+    }
+
+    50% {
+      box-shadow: 0 0 20px 4px hsla(37, 38%, 61%, 0.25);
+    }
+  }
+
+  .animate-gold-glow {
+    animation: gold-glow 2.5s ease-in-out infinite;
+  }
+
+  /* ── Hero letter jump animation ── */
+  @keyframes letterJump {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+
+    30% {
+      transform: translateY(-25px) scale(1.4);
+    }
+
+    60% {
+      transform: translateY(5px) scale(0.95);
+    }
+
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes neighborJump {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+
+    30% {
+      transform: translateY(-10px) scale(1.15);
+    }
+
+    60% {
+      transform: translateY(3px) scale(0.97);
+    }
+
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .hero-letter-jump {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    cursor: default;
+    will-change: transform;
+  }
+
+  .hero-letter-jump.jumping {
+    animation: letterJump 0.5s ease;
+  }
+
+  .hero-letter-jump.neighbor-jumping {
+    animation: neighborJump 0.5s ease;
+  }
+
+  @keyframes blink-cursor {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+}
