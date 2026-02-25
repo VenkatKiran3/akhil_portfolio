@@ -23,8 +23,8 @@ const AboutSection = () => {
   const textY = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
   return (
-    <section id="about" ref={sectionRef} className="relative overflow-hidden" style={{ background: "#000000", padding: "8rem 0" }}>
-      {/* Background animations */}
+    <section id="about" ref={sectionRef} className="relative overflow-hidden" style={{ background: "#000000", padding: "5rem 0" }}>
+      {/* Background */}
       <motion.div
         className="absolute pointer-events-none"
         style={{ width: "500px", height: "500px", border: "1px solid rgba(255,255,255,0.03)", borderRadius: "50%", top: "10%", right: "-10%" }}
@@ -49,7 +49,6 @@ const AboutSection = () => {
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         style={{ inset: 0 }}
       />
-      {/* Floating dots */}
       {[
         { left: "10%", top: "20%", delay: 0, dur: 7 },
         { left: "80%", top: "40%", delay: 2, dur: 9 },
@@ -65,21 +64,22 @@ const AboutSection = () => {
         />
       ))}
 
-      <div className="mx-auto max-w-6xl px-8 lg:px-16 relative z-10">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-16 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={vp}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-12 sm:mb-20"
         >
           <motion.p
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={vp}
             transition={{ duration: 0.5, delay: 0.1 }}
-            style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "20px" }}
+            className="text-sm sm:text-[13px]"
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "20px" }}
           >
             About
           </motion.p>
@@ -88,7 +88,7 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }}
             viewport={vp}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px, 8vw, 90px)", fontWeight: 400, color: "#ffffff", letterSpacing: "0.04em", lineHeight: 1 }}
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 10vw, 90px)", fontWeight: 400, color: "#ffffff", letterSpacing: "0.04em", lineHeight: 1 }}
           >
             ABOUT ME
           </motion.h2>
@@ -102,7 +102,7 @@ const AboutSection = () => {
         </motion.div>
 
         {/* Photo + Bio */}
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
+        <div className="grid gap-10 sm:gap-16 lg:grid-cols-2 lg:gap-24">
           {/* Photo with parallax */}
           <motion.div style={{ y: photoY }} className="relative group">
             <motion.div
@@ -145,7 +145,8 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={vp}
               transition={{ duration: 0.5, delay: 0.2 }}
-              style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "16px", fontWeight: 400, color: "#bbbbbb", lineHeight: 2, marginBottom: "24px" }}
+              className="text-base sm:text-lg"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#bbbbbb", lineHeight: 2, marginBottom: "24px" }}
             >
               Hi, I'm Akhil — a UI/UX Designer based in Chennai, passionate about designing digital products that are both beautiful and functional. I work primarily in Figma to craft user flows, wireframes, and high-fidelity prototypes that solve real problems.
             </motion.p>
@@ -154,7 +155,8 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={vp}
               transition={{ duration: 0.5, delay: 0.3 }}
-              style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "16px", fontWeight: 400, color: "#bbbbbb", lineHeight: 2, marginBottom: "40px" }}
+              className="text-base sm:text-lg"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#bbbbbb", lineHeight: 2, marginBottom: "40px" }}
             >
               My work spans mobile app design and creative web UI concepts. I bring a sharp eye for visual hierarchy, a love for dark luxury aesthetics, and a deep commitment to user-centered thinking.
             </motion.p>
@@ -166,15 +168,15 @@ const AboutSection = () => {
               viewport={vp}
               transition={{ duration: 0.4, delay: 0.4 }}
               whileHover={{ x: 8 }}
-              className="flex items-start gap-5 group cursor-default mb-8"
-              style={{ borderLeft: "2px solid rgba(255,255,255,0.2)", paddingLeft: "20px" }}
+              className="flex items-start gap-4 sm:gap-5 group cursor-default mb-8"
+              style={{ borderLeft: "2px solid rgba(255,255,255,0.2)", paddingLeft: "16px" }}
             >
               <GraduationCap className="mt-1 shrink-0 group-hover:scale-110 transition-transform" style={{ color: "#ffffff" }} size={22} />
               <div>
-                <h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "15px", fontWeight: 600, color: "#ffffff", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "6px" }}>
+                <h4 className="text-sm sm:text-base" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, color: "#ffffff", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "6px" }}>
                   Bharath Institute of Higher Education
                 </h4>
-                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "15px", fontWeight: 400, color: "#aaaaaa" }}>
+                <p className="text-sm sm:text-base" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#aaaaaa" }}>
                   B.E. Computer Science + AI · GPA 8.7 · 2021–2025
                 </p>
               </div>
@@ -187,15 +189,15 @@ const AboutSection = () => {
               viewport={vp}
               transition={{ duration: 0.4, delay: 0.5 }}
               whileHover={{ x: 8 }}
-              className="flex items-start gap-5 group cursor-default"
-              style={{ borderLeft: "2px solid rgba(255,255,255,0.2)", paddingLeft: "20px" }}
+              className="flex items-start gap-4 sm:gap-5 group cursor-default"
+              style={{ borderLeft: "2px solid rgba(255,255,255,0.2)", paddingLeft: "16px" }}
             >
               <Globe className="mt-1 shrink-0 group-hover:scale-110 transition-transform" style={{ color: "#ffffff" }} size={22} />
               <div>
-                <h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "15px", fontWeight: 600, color: "#ffffff", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "6px" }}>
+                <h4 className="text-sm sm:text-base" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, color: "#ffffff", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "6px" }}>
                   Languages
                 </h4>
-                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "15px", fontWeight: 400, color: "#aaaaaa" }}>
+                <p className="text-sm sm:text-base" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#aaaaaa" }}>
                   English · Telugu · Hindi · Tamil
                 </p>
               </div>
@@ -209,12 +211,12 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={vp}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-24"
+          className="mt-16 sm:mt-24"
         >
-          <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "30px" }}>
+          <p className="text-sm sm:text-[13px]" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "24px" }}>
             Skills & Tools
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             {skills.map((skill, i) => (
               <motion.span
                 key={skill}
@@ -229,16 +231,15 @@ const AboutSection = () => {
                   color: "#ffffff",
                   boxShadow: "0 10px 25px rgba(255,255,255,0.1)",
                 }}
-                className="cursor-default transition-all duration-300"
+                className="cursor-default transition-all duration-300 text-xs sm:text-[12px]"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "12px",
                   fontWeight: 500,
                   color: "#aaaaaa",
-                  letterSpacing: "0.15em",
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   border: "1px solid rgba(255,255,255,0.15)",
-                  padding: "12px 22px",
+                  padding: "10px 16px",
                 }}
               >
                 {skill}
