@@ -12,95 +12,51 @@ const identityItems = [
     { label: "VISUAL HIERARCHY", sub: "Design Thinking", icon: "fa-solid fa-eye" },
 ];
 
-const vp = { once: false, margin: "-60px" as const };
+const vp = { once: false, margin: "-50px" as const };
 
 const WhoIAmSection = () => {
     const [revealed, setRevealed] = useState(false);
 
     return (
-        <section id="whoiam" className="relative overflow-hidden" style={{ background: "#030303", padding: "6rem 0" }}>
+        <section id="whoiam" className="relative overflow-hidden" style={{ background: "#030303", paddingTop: "4rem", paddingBottom: "4rem" }}>
             {/* Background */}
-            <motion.div
-                className="absolute pointer-events-none"
-                style={{ width: "500px", height: "500px", border: "1px solid rgba(255,255,255,0.02)", borderRadius: "50%", top: "50%", left: "50%", marginTop: "-250px", marginLeft: "-250px" }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-                className="absolute pointer-events-none"
-                animate={{
-                    background: [
-                        "radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.015) 0%, transparent 50%)",
-                        "radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.025) 0%, transparent 50%)",
-                        "radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.015) 0%, transparent 50%)",
-                    ],
-                }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                style={{ inset: 0 }}
-            />
+            <motion.div className="absolute pointer-events-none" style={{ width: "500px", height: "500px", border: "1px solid rgba(255,255,255,0.02)", borderRadius: "50%", top: "50%", left: "50%", marginTop: "-250px", marginLeft: "-250px" }} animate={{ rotate: 360 }} transition={{ duration: 70, repeat: Infinity, ease: "linear" }} />
+            <motion.div className="absolute pointer-events-none" animate={{ background: ["radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.015) 0%, transparent 50%)", "radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.025) 0%, transparent 50%)", "radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.015) 0%, transparent 50%)"] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} style={{ inset: 0 }} />
 
-            <div className="mx-auto max-w-6xl px-8 lg:px-16 relative z-10">
+            <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-16 relative z-10">
                 {/* Clickable heading */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={vp}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10"
                 >
                     <motion.button
                         onClick={() => setRevealed(!revealed)}
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
-                        className="group cursor-pointer border-none bg-transparent inline-flex flex-col items-center gap-6"
+                        className="group cursor-pointer border-none bg-transparent inline-flex flex-col items-center gap-5"
                     >
-                        <motion.h2
-                            style={{
-                                fontFamily: "'Bebas Neue', sans-serif",
-                                fontSize: "clamp(48px, 8vw, 100px)",
-                                fontWeight: 400,
-                                color: "#ffffff",
-                                letterSpacing: "0.06em",
-                                lineHeight: 1,
-                            }}
-                            animate={revealed ? {} : {
-                                textShadow: [
-                                    "0 0 0px rgba(255,255,255,0)",
-                                    "0 0 20px rgba(255,255,255,0.1)",
-                                    "0 0 0px rgba(255,255,255,0)",
-                                ],
-                            }}
-                            transition={{ duration: 3, repeat: Infinity }}
+                        <h2
+                            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
+                            style={{ fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, color: "#ffffff", letterSpacing: "0.06em", lineHeight: 1 }}
                         >
                             WHO I AM
-                        </motion.h2>
+                        </h2>
                         <div className="flex items-center gap-3">
-                            <motion.div
-                                initial={{ width: 0 }}
-                                whileInView={{ width: "30px" }}
-                                viewport={vp}
-                                transition={{ duration: 0.4, delay: 0.3 }}
-                                className="h-px bg-white/20"
-                            />
-                            <motion.span
-                                animate={{ rotate: revealed ? 180 : 0 }}
-                                transition={{ duration: 0.3 }}
-                                style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "12px", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.3em", textTransform: "uppercase" }}
+                            <div className="w-6 sm:w-8 h-px bg-white/20" />
+                            <span className="text-[11px] sm:text-xs"
+                                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.25em", textTransform: "uppercase" }}
                             >
                                 {revealed ? "COLLAPSE" : "CLICK TO REVEAL"}
-                            </motion.span>
-                            <motion.div
-                                initial={{ width: 0 }}
-                                whileInView={{ width: "30px" }}
-                                viewport={vp}
-                                transition={{ duration: 0.4, delay: 0.3 }}
-                                className="h-px bg-white/20"
-                            />
+                            </span>
+                            <div className="w-6 sm:w-8 h-px bg-white/20" />
                         </div>
                         <motion.i
                             animate={{ rotate: revealed ? 180 : 0, y: revealed ? 0 : [0, 5, 0] }}
                             transition={revealed ? { duration: 0.3 } : { duration: 1.5, repeat: Infinity }}
-                            className="fa-solid fa-chevron-down text-white/40 text-sm"
+                            className="fa-solid fa-chevron-down text-white/40 text-xs sm:text-sm"
                         />
                     </motion.button>
                 </motion.div>
@@ -115,52 +71,33 @@ const WhoIAmSection = () => {
                             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                             className="overflow-hidden"
                         >
-                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 pb-8">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 pb-6">
                                 {identityItems.map((item, i) => (
                                     <motion.div
                                         key={item.label}
-                                        initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                                        initial={{ opacity: 0, y: 25, scale: 0.9 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                                        transition={{
-                                            delay: i * 0.08,
-                                            duration: 0.5,
-                                            ease: [0.22, 1, 0.36, 1],
-                                        }}
-                                        whileHover={{
-                                            y: -8,
-                                            borderColor: "rgba(255,255,255,0.3)",
-                                            boxShadow: "0 12px 30px rgba(255,255,255,0.06)",
-                                        }}
-                                        className="p-6 text-center cursor-default transition-all duration-300"
-                                        style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.02)" }}
+                                        transition={{ delay: i * 0.07, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                                        whileHover={{ y: -6, borderColor: "rgba(255,255,255,0.3)" }}
+                                        className="p-4 sm:p-6 text-center cursor-default"
+                                        style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.02)", transition: "all 0.3s" }}
                                     >
                                         <motion.i
-                                            className={`${item.icon} text-white/70 text-2xl mb-4 block`}
+                                            className={`${item.icon} text-white/70 text-xl sm:text-2xl mb-3 block`}
                                             initial={{ scale: 0 }}
                                             animate={{ scale: 1 }}
-                                            transition={{ delay: 0.15 + i * 0.08, type: "spring", stiffness: 200 }}
+                                            transition={{ delay: 0.12 + i * 0.07, type: "spring", stiffness: 200 }}
                                         />
                                         <h3
-                                            style={{
-                                                fontFamily: "'Bebas Neue', sans-serif",
-                                                fontSize: "clamp(16px, 2vw, 22px)",
-                                                color: "#ffffff",
-                                                letterSpacing: "0.08em",
-                                                marginBottom: "4px",
-                                            }}
+                                            className="text-sm sm:text-base lg:text-lg mb-1"
+                                            style={{ fontFamily: "'Bebas Neue', sans-serif", color: "#ffffff", letterSpacing: "0.06em" }}
                                         >
                                             {item.label}
                                         </h3>
                                         <p
-                                            style={{
-                                                fontFamily: "'Montserrat', sans-serif",
-                                                fontSize: "11px",
-                                                fontWeight: 400,
-                                                color: "#888888",
-                                                letterSpacing: "0.15em",
-                                                textTransform: "uppercase",
-                                            }}
+                                            className="text-[10px] sm:text-[11px]"
+                                            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#888888", letterSpacing: "0.12em", textTransform: "uppercase" }}
                                         >
                                             {item.sub}
                                         </p>

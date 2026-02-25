@@ -47,7 +47,7 @@ const projects = [
   },
 ];
 
-const vp = { once: false, margin: "-60px" as const };
+const vp = { once: false, margin: "-50px" as const };
 
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
   const cardRef = useRef(null);
@@ -60,50 +60,48 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={vp}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-16 items-start"
+      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-start"
     >
-      {/* Project image with parallax */}
+      {/* Project image */}
       <motion.div
-        style={{ y: imgY }}
+        style={{ y: imgY, aspectRatio: "4/3" }}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.4 }}
-        className="relative aspect-[4/3] overflow-hidden group cursor-default"
+        className="relative overflow-hidden group cursor-default"
       >
         <div className="absolute inset-0 overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.08)" }}>
-          <motion.img
+          <img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-            <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(24px, 5vw, 32px)", color: "#ffffff", letterSpacing: "0.15em" }}>
+            <span className="text-2xl sm:text-3xl" style={{ fontFamily: "'Bebas Neue', sans-serif", color: "#ffffff", letterSpacing: "0.15em" }}>
               {project.title}
             </span>
           </div>
           <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
         </div>
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp} transition={{ delay: 0.5 }} className="absolute -top-2 -left-2 w-8 h-8 border-t border-l border-white/15" />
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp} transition={{ delay: 0.6 }} className="absolute -bottom-2 -right-2 w-8 h-8 border-b border-r border-white/15" />
       </motion.div>
 
       {/* Content */}
       <div>
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={vp}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-4 flex flex-wrap gap-2"
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mb-3 flex flex-wrap gap-2"
         >
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[11px] sm:text-xs"
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.15em", border: "1px solid rgba(255,255,255,0.2)", padding: "5px 12px", textTransform: "uppercase" }}
+              className="text-[10px] sm:text-xs"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.15em", border: "1px solid rgba(255,255,255,0.2)", padding: "4px 10px", textTransform: "uppercase" }}
             >
               {tag}
             </span>
@@ -111,73 +109,73 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         </motion.div>
 
         <motion.h3
-          initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
-          whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={vp}
-          transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(28px, 5vw, 48px)", color: "#ffffff", letterSpacing: "0.04em", marginBottom: "6px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-3xl sm:text-4xl lg:text-5xl mb-1"
+          style={{ fontFamily: "'Bebas Neue', sans-serif", color: "#ffffff", letterSpacing: "0.04em" }}
         >
           {project.title}
         </motion.h3>
 
-        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp} transition={{ delay: 0.35 }}
-          className="text-xs sm:text-sm"
-          style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#888888", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "6px" }}
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp} transition={{ delay: 0.25 }}
+          className="text-xs sm:text-sm mb-1"
+          style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#888888", letterSpacing: "0.1em", textTransform: "uppercase" }}
         >
           {project.role} · {project.tool}
         </motion.p>
-        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp} transition={{ delay: 0.4 }}
-          className="text-sm sm:text-base"
-          style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#aaaaaa", marginBottom: "16px" }}
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={vp} transition={{ delay: 0.3 }}
+          className="text-sm sm:text-base mb-4"
+          style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#aaaaaa" }}
         >
           {project.subtitle}
         </motion.p>
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={vp}
-          transition={{ delay: 0.45, duration: 0.5 }}
-          className="text-sm sm:text-base"
-          style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#bbbbbb", lineHeight: 1.9, marginBottom: "20px" }}
+          transition={{ delay: 0.35 }}
+          className="text-sm sm:text-[15px] mb-5"
+          style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#bbbbbb", lineHeight: 1.8 }}
         >
           {project.description}
         </motion.p>
 
-        <ul className="mb-6 sm:mb-8 space-y-2 sm:space-y-3">
+        <ul className="mb-6 space-y-2">
           {project.highlights.map((point, j) => (
             <motion.li
               key={j}
-              initial={{ opacity: 0, x: -15 }}
+              initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={vp}
-              transition={{ duration: 0.35, delay: 0.5 + j * 0.06, ease: "easeOut" }}
-              className="flex items-start gap-3 text-sm sm:text-base"
+              transition={{ duration: 0.3, delay: 0.4 + j * 0.05 }}
+              className="flex items-start gap-3 text-[13px] sm:text-sm"
               style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#bbbbbb", lineHeight: 1.7 }}
             >
-              <span className="mt-2 block h-1 w-1 shrink-0 rounded-full" style={{ background: "#ffffff", opacity: 0.5 }} />
+              <span className="mt-2 block h-1 w-1 shrink-0 rounded-full bg-white/50" />
               {point}
             </motion.li>
           ))}
         </ul>
 
-        {/* Figma links */}
-        <div className="flex flex-col gap-3 sm:gap-4">
+        <div className="flex flex-col gap-3">
           {project.links.map((link, li) => (
             <motion.a
               key={link.label}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={vp}
-              transition={{ delay: 0.7 + li * 0.1 }}
-              whileHover={{ x: 8, letterSpacing: "0.25em" }}
-              className="inline-flex items-center gap-2 transition-all duration-300 text-xs sm:text-sm"
+              transition={{ delay: 0.6 + li * 0.1 }}
+              whileHover={{ x: 8 }}
+              className="inline-flex items-center gap-2 text-xs sm:text-sm"
               style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#ffffff", letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none" }}
             >
               {link.label}
-              <ExternalLink size={14} />
+              <ExternalLink size={13} />
             </motion.a>
           ))}
         </div>
@@ -188,31 +186,31 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="relative overflow-hidden" style={{ background: "#050505", padding: "5rem 0" }}>
+    <section id="projects" className="relative overflow-hidden" style={{ background: "#050505", paddingTop: "4rem", paddingBottom: "5rem" }}>
       {/* Background */}
       <motion.div className="absolute pointer-events-none" style={{ width: "700px", height: "700px", border: "1px solid rgba(255,255,255,0.02)", borderRadius: "50%", bottom: "-20%", left: "-15%" }} animate={{ rotate: 360 }} transition={{ duration: 100, repeat: Infinity, ease: "linear" }} />
-      <motion.div className="absolute pointer-events-none" style={{ width: "400px", height: "400px", border: "1px solid rgba(255,255,255,0.03)", borderRadius: "50%", top: "10%", right: "-8%" }} animate={{ rotate: -360 }} transition={{ duration: 70, repeat: Infinity, ease: "linear" }} />
       <motion.div className="absolute pointer-events-none" animate={{ background: ["radial-gradient(ellipse at 70% 80%, rgba(255,255,255,0.02) 0%, transparent 50%)", "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.03) 0%, transparent 50%)", "radial-gradient(ellipse at 70% 80%, rgba(255,255,255,0.02) 0%, transparent 50%)"] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} style={{ inset: 0 }} />
-      <motion.div className="absolute pointer-events-none hidden sm:block" style={{ left: "50%", top: 0, bottom: 0, width: "1px", background: "rgba(255,255,255,0.03)" }} initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }} transition={{ duration: 1.5, ease: "easeOut" }} />
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-16 relative z-10">
         {/* Header */}
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.6 }} className="mb-12 sm:mb-20">
-          <motion.p initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={vp} transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-sm sm:text-[13px]"
-            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "20px" }}
+        <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.6 }} className="mb-10 sm:mb-16">
+          <p className="text-xs sm:text-sm mb-5"
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase" }}
           >
             Work
-          </motion.p>
-          <motion.h2 initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }} whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }} viewport={vp} transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 10vw, 90px)", fontWeight: 400, color: "#ffffff", letterSpacing: "0.04em", lineHeight: 1 }}
+          </p>
+          <h2
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, color: "#ffffff", letterSpacing: "0.04em", lineHeight: 1 }}
           >
-            SELECTED PROJECTS
-          </motion.h2>
-          <motion.div initial={{ width: 0 }} whileInView={{ width: "50px" }} viewport={vp} transition={{ duration: 0.5, delay: 0.5 }} style={{ height: "1px", background: "#ffffff", marginTop: "24px", opacity: 0.3 }} />
+            SELECTED
+            <br className="sm:hidden" />
+            {" "}PROJECTS
+          </h2>
+          <motion.div initial={{ width: 0 }} whileInView={{ width: "50px" }} viewport={vp} transition={{ duration: 0.5, delay: 0.3 }} className="h-px bg-white/30 mt-6" />
         </motion.div>
 
-        <div className="space-y-20 sm:space-y-32">
+        <div className="space-y-16 sm:space-y-24 lg:space-y-32">
           {projects.map((project, i) => (
             <ProjectCard key={project.title} project={project} index={i} />
           ))}

@@ -10,7 +10,7 @@ const skills = [
   "Social Media Visual Design", "Figma", "Photoshop", "Canva",
 ];
 
-const vp = { once: false, margin: "-60px" as const };
+const vp = { once: false, margin: "-50px" as const };
 
 const AboutSection = () => {
   const sectionRef = useRef(null);
@@ -23,93 +23,37 @@ const AboutSection = () => {
   const textY = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
   return (
-    <section id="about" ref={sectionRef} className="relative overflow-hidden" style={{ background: "#000000", padding: "5rem 0" }}>
+    <section id="about" ref={sectionRef} className="relative overflow-hidden" style={{ background: "#000000", paddingTop: "4rem", paddingBottom: "5rem" }}>
       {/* Background */}
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{ width: "500px", height: "500px", border: "1px solid rgba(255,255,255,0.03)", borderRadius: "50%", top: "10%", right: "-10%" }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-      />
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{ width: "300px", height: "300px", border: "1px solid rgba(255,255,255,0.02)", borderRadius: "50%", bottom: "15%", left: "-5%" }}
-        animate={{ rotate: -360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-      />
-      <motion.div
-        className="absolute pointer-events-none"
-        animate={{
-          background: [
-            "radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.02) 0%, transparent 50%)",
-            "radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.03) 0%, transparent 50%)",
-            "radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.02) 0%, transparent 50%)",
-          ],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        style={{ inset: 0 }}
-      />
-      {[
-        { left: "10%", top: "20%", delay: 0, dur: 7 },
-        { left: "80%", top: "40%", delay: 2, dur: 9 },
-        { left: "50%", top: "70%", delay: 4, dur: 8 },
-        { left: "90%", top: "15%", delay: 1, dur: 10 },
-      ].map((p, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full pointer-events-none"
-          style={{ width: 3, height: 3, left: p.left, top: p.top, background: "rgba(255,255,255,0.1)" }}
-          animate={{ y: [0, -30, 0], opacity: [0.1, 0.4, 0.1] }}
-          transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
-        />
-      ))}
+      <motion.div className="absolute pointer-events-none" style={{ width: "500px", height: "500px", border: "1px solid rgba(255,255,255,0.03)", borderRadius: "50%", top: "10%", right: "-10%" }} animate={{ rotate: 360 }} transition={{ duration: 80, repeat: Infinity, ease: "linear" }} />
+      <motion.div className="absolute pointer-events-none" animate={{ background: ["radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.02) 0%, transparent 50%)", "radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.03) 0%, transparent 50%)", "radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.02) 0%, transparent 50%)"] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} style={{ inset: 0 }} />
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-16 relative z-10">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={vp}
-          transition={{ duration: 0.6 }}
-          className="mb-12 sm:mb-20"
-        >
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={vp}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-sm sm:text-[13px]"
-            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "20px" }}
+        {/* Header */}
+        <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.6 }} className="mb-10 sm:mb-16">
+          <p className="text-xs sm:text-sm mb-5"
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase" }}
           >
             About
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
-            whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }}
-            viewport={vp}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 10vw, 90px)", fontWeight: 400, color: "#ffffff", letterSpacing: "0.04em", lineHeight: 1 }}
+          </p>
+          <h2
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, color: "#ffffff", letterSpacing: "0.04em", lineHeight: 1 }}
           >
             ABOUT ME
-          </motion.h2>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "50px" }}
-            viewport={vp}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            style={{ height: "1px", background: "#ffffff", marginTop: "24px", opacity: 0.3 }}
-          />
+          </h2>
+          <motion.div initial={{ width: 0 }} whileInView={{ width: "50px" }} viewport={vp} transition={{ duration: 0.5, delay: 0.3 }} className="h-px bg-white/30 mt-6" />
         </motion.div>
 
         {/* Photo + Bio */}
-        <div className="grid gap-10 sm:gap-16 lg:grid-cols-2 lg:gap-24">
-          {/* Photo with parallax */}
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-20">
+          {/* Photo */}
           <motion.div style={{ y: photoY }} className="relative group">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotateY: -5 }}
-              whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={vp}
-              transition={{ duration: 0.8, delay: 0.15 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
               className="relative overflow-hidden"
               style={{ border: "1px solid rgba(255,255,255,0.08)" }}
             >
@@ -122,82 +66,54 @@ const AboutSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={vp}
-              transition={{ delay: 0.6 }}
-              className="absolute -top-3 -left-3 w-12 h-12 border-t border-l border-white/20"
-            />
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={vp}
-              transition={{ delay: 0.7 }}
-              className="absolute -bottom-3 -right-3 w-12 h-12 border-b border-r border-white/20"
-            />
+            <div className="absolute -top-2 -left-2 w-10 h-10 border-t border-l border-white/20" />
+            <div className="absolute -bottom-2 -right-2 w-10 h-10 border-b border-r border-white/20" />
           </motion.div>
 
-          {/* Bio text with parallax */}
+          {/* Bio */}
           <motion.div style={{ y: textY }} className="flex flex-col justify-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={vp}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-base sm:text-lg"
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#bbbbbb", lineHeight: 2, marginBottom: "24px" }}
+            <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ delay: 0.15 }}
+              className="text-sm sm:text-base lg:text-lg mb-5"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#bbbbbb", lineHeight: 1.9 }}
             >
-              Hi, I'm Akhil — a UI/UX Designer based in Chennai, passionate about designing digital products that are both beautiful and functional. I work primarily in Figma to craft user flows, wireframes, and high-fidelity prototypes that solve real problems.
+              Hi, I'm Akhil — a UI/UX Designer passionate about designing digital products that are both beautiful and functional. I work primarily in Figma to craft user flows, wireframes, and high-fidelity prototypes that solve real problems.
             </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={vp}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-base sm:text-lg"
-              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#bbbbbb", lineHeight: 2, marginBottom: "40px" }}
+            <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ delay: 0.25 }}
+              className="text-sm sm:text-base lg:text-lg mb-8"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#bbbbbb", lineHeight: 1.9 }}
             >
               My work spans mobile app design and creative web UI concepts. I bring a sharp eye for visual hierarchy, a love for dark luxury aesthetics, and a deep commitment to user-centered thinking.
             </motion.p>
 
             {/* Education */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={vp}
-              transition={{ duration: 0.4, delay: 0.4 }}
+            <motion.div initial={{ opacity: 0, x: -15 }} whileInView={{ opacity: 1, x: 0 }} viewport={vp} transition={{ delay: 0.3 }}
               whileHover={{ x: 8 }}
-              className="flex items-start gap-4 sm:gap-5 group cursor-default mb-8"
+              className="flex items-start gap-4 group cursor-default mb-6"
               style={{ borderLeft: "2px solid rgba(255,255,255,0.2)", paddingLeft: "16px" }}
             >
-              <GraduationCap className="mt-1 shrink-0 group-hover:scale-110 transition-transform" style={{ color: "#ffffff" }} size={22} />
+              <GraduationCap className="mt-0.5 shrink-0 group-hover:scale-110 transition-transform" style={{ color: "#ffffff" }} size={20} />
               <div>
-                <h4 className="text-sm sm:text-base" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, color: "#ffffff", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "6px" }}>
+                <h4 className="text-sm sm:text-base font-semibold mb-1" style={{ fontFamily: "'Montserrat', sans-serif", color: "#ffffff", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
                   Bharath Institute of Higher Education
                 </h4>
-                <p className="text-sm sm:text-base" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#aaaaaa" }}>
+                <p className="text-xs sm:text-sm" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#aaaaaa" }}>
                   B.E. Computer Science + AI · GPA 8.7 · 2021–2025
                 </p>
               </div>
             </motion.div>
 
             {/* Languages */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={vp}
-              transition={{ duration: 0.4, delay: 0.5 }}
+            <motion.div initial={{ opacity: 0, x: -15 }} whileInView={{ opacity: 1, x: 0 }} viewport={vp} transition={{ delay: 0.4 }}
               whileHover={{ x: 8 }}
-              className="flex items-start gap-4 sm:gap-5 group cursor-default"
+              className="flex items-start gap-4 group cursor-default"
               style={{ borderLeft: "2px solid rgba(255,255,255,0.2)", paddingLeft: "16px" }}
             >
-              <Globe className="mt-1 shrink-0 group-hover:scale-110 transition-transform" style={{ color: "#ffffff" }} size={22} />
+              <Globe className="mt-0.5 shrink-0 group-hover:scale-110 transition-transform" style={{ color: "#ffffff" }} size={20} />
               <div>
-                <h4 className="text-sm sm:text-base" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, color: "#ffffff", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "6px" }}>
+                <h4 className="text-sm sm:text-base font-semibold mb-1" style={{ fontFamily: "'Montserrat', sans-serif", color: "#ffffff", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
                   Languages
                 </h4>
-                <p className="text-sm sm:text-base" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#aaaaaa" }}>
+                <p className="text-xs sm:text-sm" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: "#aaaaaa" }}>
                   English · Telugu · Hindi · Tamil
                 </p>
               </div>
@@ -206,40 +122,31 @@ const AboutSection = () => {
         </div>
 
         {/* Skills */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={vp}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-16 sm:mt-24"
-        >
-          <p className="text-sm sm:text-[13px]" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase", marginBottom: "24px" }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }} className="mt-14 sm:mt-20">
+          <p className="text-xs sm:text-sm mb-6"
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.4em", textTransform: "uppercase" }}
+          >
             Skills & Tools
           </p>
-          <div className="flex flex-wrap gap-2 sm:gap-3">
+          <div className="flex flex-wrap gap-2">
             {skills.map((skill, i) => (
               <motion.span
                 key={skill}
-                initial={{ opacity: 0, y: 15, scale: 0.85 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={vp}
-                transition={{ delay: i * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{
-                  y: -8,
-                  scale: 1.08,
-                  borderColor: "#ffffff",
-                  color: "#ffffff",
-                  boxShadow: "0 10px 25px rgba(255,255,255,0.1)",
-                }}
-                className="cursor-default transition-all duration-300 text-xs sm:text-[12px]"
+                transition={{ delay: i * 0.03, duration: 0.3 }}
+                whileHover={{ y: -6, scale: 1.05, borderColor: "#ffffff", color: "#ffffff" }}
+                className="cursor-default text-[11px] sm:text-xs"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 500,
                   color: "#aaaaaa",
-                  letterSpacing: "0.12em",
+                  letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   border: "1px solid rgba(255,255,255,0.15)",
-                  padding: "10px 16px",
+                  padding: "8px 14px",
+                  transition: "all 0.3s",
                 }}
               >
                 {skill}
