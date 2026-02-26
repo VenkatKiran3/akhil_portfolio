@@ -46,11 +46,14 @@ const WhoIAmSection = () => {
                         </h2>
                         <div className="flex items-center gap-3">
                             <div className="w-6 sm:w-8 h-px bg-white/20" />
-                            <span className="text-[11px] sm:text-xs"
+                            <motion.span
+                                className="text-[11px] sm:text-xs inline-block"
+                                animate={{ rotateX: revealed ? 180 : 0 }}
+                                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, color: "#aaaaaa", letterSpacing: "0.25em", textTransform: "uppercase" }}
                             >
                                 {revealed ? "COLLAPSE" : "CLICK TO REVEAL"}
-                            </span>
+                            </motion.span>
                             <div className="w-6 sm:w-8 h-px bg-white/20" />
                         </div>
                         <motion.i
